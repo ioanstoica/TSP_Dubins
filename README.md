@@ -19,6 +19,7 @@ ling salesman problem).
 
 ## Cum se ruleaza
  - pip install python-tsp
+ - pip install pygad
  - python main.py
 
 ## Obs: Daca pentru un punct, se schimba unghiul de plecare, se schimba si lungimea traiectoriei
