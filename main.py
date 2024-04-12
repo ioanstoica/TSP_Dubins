@@ -69,7 +69,7 @@ def main():
 
     plt.grid(True)
     plt.axis("equal")
-    plt.title('Dubin\'s Curves Trajectory Generation')
+    plt.title('Dubin\'s Curves Trajectory Generation, length: ' + str(round(total_length)) + 'm')
     plt.xlabel('X')
     plt.ylabel('Y')
     plt.show()
