@@ -14,24 +14,22 @@ ling salesman problem).
 întoarcere minimă.
 
 ## Resurse folosite
-https://github.com/fgabbert/dubins_py - pentru a calcula traiectoriile Dubins
-python_tsp - pentru a calcula traseul optim intr-o lista de puncte
+ - https://github.com/fgabbert/dubins_py - pentru a calcula traiectoriile Dubins
+ - python_tsp - pentru a calcula traseul optim intr-o lista de puncte
 
 
 ## Obs: Daca pentru un punct, se schimba unghiul de plecare, se schimba si lungimea traiectoriei
 ex:
-Wptz = [Waypoint(0,0,0), 
+ - Wptz = [Waypoint(0,0,0), 
     Waypoint(6000,7000,260), 
     Waypoint(1000,15000,180), 
     Waypoint(-5000,5000,270), 
     Waypoint(0,10000,180)]
 
-si
-
-Wptz = [Waypoint(0,0,0), 
+ - Wptz = [Waypoint(0,0,0), 
         Waypoint(6000,7000,260), 
         Waypoint(1000,15000,180), 
         Waypoint(-5000,5000,270), 
         Waypoint(0,10000,0)]
     
-Au traiectorii si distante diferite (45075 metri, respectiv 46979 metri)
+ - Au traiectorii si distante diferite (45075 metri, respectiv 46979 metri)
