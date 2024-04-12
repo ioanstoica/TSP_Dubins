@@ -36,3 +36,11 @@ ex:
         Waypoint(0,10000,0)]
     
  - Au traiectorii si distante diferite (45075 metri, respectiv 46979 metri)
+
+## Timp de rulare
+ - Pentru 5 puncte x 3 raze, timpul de rulare este de aproximativ 15 secunde
+ - Pentru 7 puncte x 3 raze, timpul de rulare este de aproximativ 90 secunde
+ - Pentru 8 puncte x 3 raze, timpul de rulare este de aproximativ 115 secunde
+ - Pentru 9 puncte x 3 raze, timpul de rulare este de aproximativ 152 secunde
+ - Pentru 10 puncte x 3 raze, timpul de rulare este de aproximativ 400 secunde
+
