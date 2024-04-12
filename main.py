@@ -1,7 +1,9 @@
 from dubins_py import Waypoint, calcDubinsPath, dubins_traj
 from python_tsp.exact import solve_tsp_dynamic_programming
+from python_tsp.heuristics import solve_tsp_simulated_annealing
 import matplotlib.pyplot as plt
 import numpy as np
+import math
 
 def dubins_length(param):
     length = (param.seg_final[0]+param.seg_final[1]+param.seg_final[2])*param.turn_radius
@@ -26,7 +28,10 @@ def solveTSP(Wptz, r):
     distance_matrix[:, 0] = 0
 
     # Solve the TSP problem
-    permutation, distance = solve_tsp_dynamic_programming(distance_matrix)
+    if len(Wptz) < 10:
+        permutation, distance = solve_tsp_dynamic_programming(distance_matrix)
+    else:
+        permutation, distance = solve_tsp_simulated_annealing(distance_matrix)
 
     Wptz = [Wptz[i] for i in permutation]
     return Wptz, distance
@@ -52,21 +57,31 @@ def TSP_Dubins(Wptz, r, ax):
     ax.set_ylabel('Y')
 
 def main():
-    # User's waypoints: [x, y, heading (degrees)] - heading is the angle of the vehicle's orientation where 0 is North
-    Wptz = [Waypoint(0,0,0), 
-            Waypoint(6000,7000,260), 
-            Waypoint(1000,15000,180), 
-            Waypoint(-5000,5000,270), 
-            Waypoint(0,10000,0)]
+    # User's waypoints: [x, y, heading (degrees)] - heading is the angle of the vehicle's orientation where 0 is North, and 180 is South
+    # Wptz = [Waypoint(0,0,0), 
+    #         Waypoint(6000,7000,260), 
+    #         Waypoint(1000,15000,180), 
+    #         Waypoint(-5000,5000,270), 
+    #         Waypoint(-5000,-5000,0),
+    #         Waypoint(0,10000,0)]
+
+    # fill wptz with 20 points
+    Wptz = []
+    for i in range(6):
+        Wptz.append(Waypoint(np.random.randint(-10000, 10000), np.random.randint(-10000, 10000), np.random.randint(0, 360)))
 
     # Define the turning radius, try for different values
     radius = [50, 100, 150, 200]
 
-    fig, axs = plt.subplots(len(radius), 1, figsize=(10, 12))
+    # Calculăm numărul de rânduri necesar pentru 2 coloane
+    nr_randuri = math.ceil(len(radius) / 2)
+
+    fig, axs = plt.subplots(nr_randuri, 2, figsize=(10, 12))
+    plt.tight_layout()
 
     # Pentru fiecare rază de virare, rezolvă problema TSP și generează traseul Dubins
     for t in range(len(radius)):
-        TSP_Dubins(Wptz, radius[t], axs[t])
+        TSP_Dubins(Wptz, radius[t], axs[t//2, t%2])
 
     plt.tight_layout()    
     plt.show()
