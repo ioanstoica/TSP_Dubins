@@ -68,10 +68,12 @@ def main():
     # fill wptz with 20 points
     Wptz = []
     for i in range(6):
-        Wptz.append(Waypoint(np.random.randint(-10000, 10000), np.random.randint(-10000, 10000), np.random.randint(0, 360)))
+        Wptz.append(Waypoint(np.random.randint(-10000, 10000), 
+                             np.random.randint(-10000, 10000), 
+                             np.random.randint(0, 360)))
 
     # Define the turning radius, try for different values
-    radius = [50, 100, 150, 200]
+    radius = np.linspace(10, 200, num=6)
 
     # Calculăm numărul de rânduri necesar pentru 2 coloane
     nr_randuri = math.ceil(len(radius) / 2)
