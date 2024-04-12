@@ -65,15 +65,17 @@ def main():
     #         Waypoint(-5000,-5000,0),
     #         Waypoint(0,10000,0)]
 
+    nr_points = 7
+
     # fill wptz with 20 points
     Wptz = []
-    for i in range(6):
+    for i in range(nr_points):
         Wptz.append(Waypoint(np.random.randint(-10000, 10000), 
                              np.random.randint(-10000, 10000), 
                              np.random.randint(0, 360)))
 
     # Define the turning radius, try for different values
-    radius = np.linspace(10, 200, num=6)
+    radius = np.linspace(10, 150, num=6)
 
     # Calculăm numărul de rânduri necesar pentru 2 coloane
     nr_randuri = math.ceil(len(radius) / 2)
