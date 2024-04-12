@@ -133,7 +133,7 @@ def TSP_Dubins_genetics(Wptz, r, ax):
 
 def main():
     # User's waypoints: [x, y, heading (degrees)] - heading is the angle of the vehicle's orientation where 0 is North, and 180 is South
-    nr_points = 10
+    nr_points = 6
     Wptz = []
     # fill wptz with points
     for i in range(nr_points):
@@ -142,7 +142,7 @@ def main():
                              np.random.randint(0, 360)))
 
     # Define the turning radius, try for different values
-    radius = np.linspace(50, 100, num=2)
+    radius = np.linspace(20, 150, num=4)
 
     fig, axs = plt.subplots(len(radius), 2, figsize=(10, 12))
     plt.tight_layout()
