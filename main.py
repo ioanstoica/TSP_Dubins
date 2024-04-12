@@ -7,6 +7,7 @@ def dubins_length(param):
     length = (param.seg_final[0]+param.seg_final[1]+param.seg_final[2])*param.turn_radius
     return length
 
+# Rezolvă problema TSP pentru a minimiza lungimea traseului Dubins
 def solveTSP(Wptz, r):
     # Calculează matricea distanțelor
     distance_matrix = []
@@ -30,7 +31,7 @@ def solveTSP(Wptz, r):
     Wptz = [Wptz[i] for i in permutation]
     return Wptz, distance
 
-# Rezolvă problema TSP, reordonând punctele pentru a minimiza lungimea traseului
+# Rezolvă problema TSP, si ploteaza in ax traseul Dubins
 def TSP_Dubins(Wptz, r, ax):
     Wptz, total_length = solveTSP(Wptz, r)
 
