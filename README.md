@@ -17,6 +17,9 @@ ling salesman problem).
  - https://github.com/fgabbert/dubins_py - pentru a calcula traiectoriile Dubins
  - python_tsp - pentru a calcula traseul optim intr-o lista de puncte
 
+## Cum se ruleaza
+ - pip install python-tsp
+ - python main.py
 
 ## Obs: Daca pentru un punct, se schimba unghiul de plecare, se schimba si lungimea traiectoriei
 ex:
