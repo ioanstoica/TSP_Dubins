@@ -127,7 +127,7 @@ def dubinsLSL(alpha, beta, d):
     tmp1      = math.atan2((math.cos(beta)-math.cos(alpha)),tmp0)
     p_squared = 2 + d*d - (2*math.cos(alpha-beta)) + (2*d*(math.sin(alpha)-math.sin(beta)))
     if p_squared<0:
-        print('No LSL Path')
+        # print('No LSL Path')
         p=-1
         q=-1
         t=-1
@@ -142,7 +142,7 @@ def dubinsRSR(alpha, beta, d):
     tmp1      = math.atan2((math.cos(alpha)-math.cos(beta)),tmp0)
     p_squared = 2 + d*d - (2*math.cos(alpha-beta)) + 2*d*(math.sin(beta)-math.sin(alpha))
     if p_squared<0:
-        print('No RSR Path')
+        # print('No RSR Path')
         p=-1
         q=-1
         t=-1
@@ -156,7 +156,7 @@ def dubinsRSL(alpha,beta,d):
     tmp0      = d - math.sin(alpha) - math.sin(beta)
     p_squared = -2 + d*d + 2*math.cos(alpha-beta) - 2*d*(math.sin(alpha) + math.sin(beta))
     if p_squared<0:
-        print('No RSL Path')
+        # print('No RSL Path')
         p=-1
         q=-1
         t=-1
@@ -171,7 +171,7 @@ def dubinsLSR(alpha, beta, d):
     tmp0      = d + math.sin(alpha) + math.sin(beta)
     p_squared = -2 + d*d + 2*math.cos(alpha-beta) + 2*d*(math.sin(alpha) + math.sin(beta))
     if p_squared<0:
-        print('No LSR Path')
+        # print('No LSR Path')
         p=-1
         q=-1
         t=-1
@@ -185,7 +185,7 @@ def dubinsLSR(alpha, beta, d):
 def dubinsRLR(alpha, beta, d):
     tmp_rlr = (6 - d*d + 2*math.cos(alpha-beta) + 2*d*(math.sin(alpha)-math.sin(beta)))/8
     if(abs(tmp_rlr)>1):
-        print('No RLR Path')
+        # print('No RLR Path')
         p=-1
         q=-1
         t=-1
@@ -199,7 +199,7 @@ def dubinsRLR(alpha, beta, d):
 def dubinsLRL(alpha, beta, d):
     tmp_lrl = (6 - d*d + 2*math.cos(alpha-beta) + 2*d*(-1*math.sin(alpha)+math.sin(beta)))/8
     if(abs(tmp_lrl)>1):
-        print('No LRL Path')
+        # print('No LRL Path')
         p=-1
         q=-1
         t=-1
@@ -207,7 +207,7 @@ def dubinsLRL(alpha, beta, d):
         p = (2*math.pi - math.acos(tmp_lrl)) % (2*math.pi)
         t = (-1*alpha - math.atan2((math.cos(alpha)-math.cos(beta)), d+math.sin(alpha)-math.sin(beta)) + p/2) % (2*math.pi)
         q = ((beta % (2*math.pi))-alpha-t+(p % (2*math.pi))) % (2*math.pi)
-        print(t,p,q,beta,alpha)
+        # print(t,p,q,beta,alpha)
     return t, p, q
 
 def dubins_traj(param,step):
