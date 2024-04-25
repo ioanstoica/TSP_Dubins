@@ -14,7 +14,7 @@ ling salesman problem).
 întoarcere minimă.
 
 # Echipa
-Stoica Ioan
+Stoica Ioan <br>
 Alexandru Andrei
 
 ## Resurse folosite
