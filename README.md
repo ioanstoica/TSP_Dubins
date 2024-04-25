@@ -13,6 +13,10 @@ ling salesman problem).
     ii) Ilustrați traiectoriile rezultate pentru diverse valori ale valorii de rază de
 întoarcere minimă.
 
+# Echipa
+Stoica Ioan
+Alexandru Andrei
+
 ## Resurse folosite
  - https://github.com/fgabbert/dubins_py - pentru a calcula traiectoriile Dubins
  - python_tsp - pentru a calcula traseul optim intr-o lista de puncte
