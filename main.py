@@ -19,7 +19,7 @@ def solveTSP(Wptz, r):
             if i == j:
                 row.append(0)
             else:
-                param = calcDubinsPath(Wptz[i], Wptz[j], r, 20)
+                param = calcDubinsPath(Wptz[i], Wptz[j], r, 30)
                 row.append(dubins_length(param))
         distance_matrix.append(row)
     
@@ -40,9 +40,12 @@ def solveTSP(Wptz, r):
 def TSP_Dubins(Wptz, r, ax):
     Wptz, total_length = solveTSP(Wptz, r)
 
+    # Start point
+    ax.plot(Wptz[0].x,Wptz[0].y, "ro")
+
     # Calculează traseul Dubins
     for i in range(len(Wptz)-1):
-        param = calcDubinsPath(Wptz[i], Wptz[i+1], r, 20)
+        param = calcDubinsPath(Wptz[i], Wptz[i+1], r, 30)
         path = dubins_traj(param,1)
 
         # Plot the results
@@ -52,7 +55,7 @@ def TSP_Dubins(Wptz, r, ax):
 
     ax.grid(True)
     ax.axis("equal")
-    ax.set_title('Best trajectory, length: ' + str(round(total_length)) + 'm' + ', radius: ' + str(r) + 'm')
+    ax.set_title('Best trajectory, length: ' + str(round(total_length)) + 'm' + ', vel: ' + str(round(r)) + 'm')
     ax.set_xlabel(' ')
     ax.set_ylabel('Y')
 
@@ -65,27 +68,27 @@ def main():
     #         Waypoint(-5000,-5000,0),
     #         Waypoint(0,10000,0)]
 
-    nr_points = 7
+    nr_points = 6
 
-    # fill wptz with 20 points
+    # fill wptz with n points
     Wptz = []
     for i in range(nr_points):
         Wptz.append(Waypoint(np.random.randint(-10000, 10000), 
                              np.random.randint(-10000, 10000), 
                              np.random.randint(0, 360)))
 
-    # Define the turning radius, try for different values
-    radius = np.linspace(10, 150, num=6)
+    # Define the turning vel, try for different values
+    vel = np.linspace(10, 200, num=8)
 
     # Calculăm numărul de rânduri necesar pentru 2 coloane
-    nr_randuri = math.ceil(len(radius) / 2)
+    nr_randuri = math.ceil(len(vel) / 2)
 
     fig, axs = plt.subplots(nr_randuri, 2, figsize=(10, 12))
     plt.tight_layout()
 
     # Pentru fiecare rază de virare, rezolvă problema TSP și generează traseul Dubins
-    for t in range(len(radius)):
-        TSP_Dubins(Wptz, radius[t], axs[t//2, t%2])
+    for t in range(len(vel)):
+        TSP_Dubins(Wptz, vel[t], axs[t//2, t%2])
 
     plt.tight_layout()    
     plt.show()

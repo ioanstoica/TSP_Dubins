@@ -5,6 +5,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pygad
 
+phi_lim = 20
+
 def dubins_length(param):
     length = (param.seg_final[0]+param.seg_final[1]+param.seg_final[2])*param.turn_radius
     return length
@@ -19,7 +21,7 @@ def solveTSP(Wptz, r):
             if i == j:
                 row.append(0)
             else:
-                param = calcDubinsPath(Wptz[i], Wptz[j], r, 20)
+                param = calcDubinsPath(Wptz[i], Wptz[j], r, phi_lim)
                 row.append(dubins_length(param))
         distance_matrix.append(row)
     
@@ -45,7 +47,7 @@ def TSP_Dubins(Wptz, r, ax):
 
     # Calculează traseul Dubins
     for i in range(len(Wptz)-1):
-        param = calcDubinsPath(Wptz[i], Wptz[i+1], r, 20)
+        param = calcDubinsPath(Wptz[i], Wptz[i+1], r, phi_lim)
         path = dubins_traj(param,1)
 
         # Plot the results
@@ -55,7 +57,7 @@ def TSP_Dubins(Wptz, r, ax):
 
     ax.grid(True)
     ax.axis("equal")
-    ax.set_title('TSP, length: ' + str(round(total_length)) + 'm' + ', radius: ' + str(r) + 'm')
+    ax.set_title('TSP, length: ' + str(round(total_length)) + 'm' + ', radius: ' + str(round(r)) + 'm')
     ax.set_xlabel(' ')
     ax.set_ylabel('Y')    
 
@@ -117,7 +119,7 @@ def TSP_Dubins_genetics(Wptz, r, ax):
 
     # Calculează traseul Dubins
     for i in range(len(Wptz)-1):
-        param = calcDubinsPath(Wptz[i], Wptz[i+1], r, 20)
+        param = calcDubinsPath(Wptz[i], Wptz[i+1], r, phi_lim)
         path = dubins_traj(param,1)
 
         # Plot the results
@@ -127,7 +129,7 @@ def TSP_Dubins_genetics(Wptz, r, ax):
 
     ax.grid(True)
     ax.axis("equal")
-    ax.set_title('TSP with genetics, length: ' + str(round(total_length)) + 'm' + ', radius: ' + str(r) + 'm')
+    ax.set_title('TSP with genetics, length: ' + str(round(total_length)) + 'm' + ', vel: ' + str(round(r)) + 'm')
     ax.set_xlabel(' ')
     ax.set_ylabel('Y')
 
@@ -142,7 +144,7 @@ def main():
                              np.random.randint(0, 360)))
 
     # Define the turning radius, try for different values
-    radius = np.linspace(20, 150, num=4)
+    radius = np.linspace(50, 150, num=4)
 
     fig, axs = plt.subplots(len(radius), 2, figsize=(10, 12))
     plt.tight_layout()
